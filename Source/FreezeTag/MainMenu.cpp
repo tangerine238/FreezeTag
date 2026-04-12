@@ -4,6 +4,7 @@
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
 #include "Components/WidgetSwitcher.h"
+#include "GI_FreezeTag.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 void UMainMenu::NativeConstruct()
@@ -38,6 +39,10 @@ void UMainMenu::NativeConstruct()
 
 void UMainMenu::OnHostClicked()
 {
+    SavePlayerName();
+    if (SessionManager)
+        SessionManager->CreateSession(4, FString("FreezeTag"));
+
     UE_LOG(LogTemp, Warning, TEXT("Host clicked"));
     if (SessionManager)
     {
@@ -73,6 +78,8 @@ void UMainMenu::OnQuitClicked()
 
 void UMainMenu::OnJoinConfirmClicked()
 {
+    SavePlayerName();
+
     if (SelectedSessionIndex < 0) return;
     if (!SessionManager) return;
     if (!SessionManager->LastSearchResults.IsValidIndex(SelectedSessionIndex)) return;
@@ -106,7 +113,7 @@ void UMainMenu::OnSessionCreated(bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {
-        GetWorld()->ServerTravel(FString("/Game/Level/Lvl_ThirdPerson?listen"));
+        GetWorld()->ServerTravel(FString("/Game/Level/Lobby?listen"));
     }
 }
 
@@ -114,7 +121,6 @@ void UMainMenu::OnSessionJoined(bool bWasSuccessful)
 {
     if (!bWasSuccessful)
     {
-        // Optionally show an error message in the UI
     }
 }
 
@@ -162,4 +168,14 @@ void UMainMenu::PopulateServerList()
 void UMainMenu::OnSessionsFound(bool bWasSuccessful)
 {
     PopulateServerList();
+}
+
+void UMainMenu::SavePlayerName()
+{
+    if (!PlayerNameInput) return;
+    FString Name = PlayerNameInput->GetText().ToString().TrimStartAndEnd();
+    if (Name.IsEmpty()) Name = TEXT("Player");
+
+    if (UGI_FreezeTag* GI = GetGameInstance<UGI_FreezeTag>())
+        GI->LocalPlayerName = Name;
 }

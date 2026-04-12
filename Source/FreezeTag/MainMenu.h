@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ServerEntryWidget.h"
 #include "Components/TextBlock.h"
+#include "Components/EditableTextBox.h"
 #include "MainMenu.generated.h"
 
 class UMultiplayerSessionManager;
@@ -58,6 +59,9 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock *SearchStatusText;
 
+	UPROPERTY(meta = (BindWidget))
+	UEditableTextBox* PlayerNameInput;
+
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UServerEntryWidget> ServerEntryWidgetClass;
 
@@ -87,6 +91,8 @@ private:
 
 	UFUNCTION()
     void OnSessionsFound(bool bWasSuccessful);
+
+	void SavePlayerName();
 
 	static const int32 MainPanelIndex = 0;
 	static const int32 JoinPanelIndex = 1;
