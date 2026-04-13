@@ -27,10 +27,11 @@ void ULobbyWidget::NativeConstruct()
 void ULobbyWidget::OnReadyClicked()
 {
     bIsReady = !bIsReady;
-
-    if (ReadyButtonText)
-        ReadyButtonText->SetText(
-            FText::FromString(bIsReady ? TEXT("Not Ready") : TEXT("Ready")));
+    
+    if (ReadyButtonText){
+        
+        ReadyButtonText->SetText(FText::FromString(bIsReady ? TEXT("Ready") : TEXT("Not Ready")));
+    }
 
     if (APC_Lobby* PC = Cast<APC_Lobby>(GetOwningPlayer()))
         PC->RequestSetReady(bIsReady);
