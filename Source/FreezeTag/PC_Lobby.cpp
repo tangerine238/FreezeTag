@@ -20,12 +20,23 @@ void APC_Lobby::BeginPlay()
 {
     Super::BeginPlay();
 
-    if (!IsLocalController()) return;
-
-    if (UGI_FreezeTag* GI = GetGameInstance<UGI_FreezeTag>())
+    if (IsLocalController())
     {
-        ServerSetPlayerName(GI->LocalPlayerName);
+        if (LobbyWidgetClass)
+        {
+            LobbyWidget = CreateWidget<ULobbyWidget>(this, LobbyWidgetClass);
+            if (LobbyWidget)
+            {
+                LobbyWidget->AddToViewport();
+                SetInputMode(FInputModeUIOnly());
+                bShowMouseCursor = true;
+            }
+        }
     }
+
+    if (!IsLocalController()) return;
+    if (UGI_FreezeTag* GI = GetGameInstance<UGI_FreezeTag>())
+        ServerSetPlayerName(GI->LocalPlayerName);
 }
 
 void APC_Lobby::ServerSetPlayerName_Implementation(const FString& NewName)

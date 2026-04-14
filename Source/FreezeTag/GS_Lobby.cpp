@@ -5,6 +5,8 @@
 #include "PS_Lobby.h"
 #include "GM_Lobby.h"
 
+
+
 void AGS_Lobby::CheckAllReady()
 {
     if (PlayerArray.Num() == 0) return;
@@ -22,7 +24,10 @@ void AGS_Lobby::CheckAllReady()
 
     if (bAllReady)
     {
-		// create loading screen here
+        MulticastNotifyLobbyChanged();
+
+        MulticastNotifyGameStarting();
+
         if (AGM_Lobby* LGM = GetWorld()->GetAuthGameMode<AGM_Lobby>())
         {
             LGM->StartGame();
@@ -42,3 +47,7 @@ void AGS_Lobby::MulticastNotifyLobbyChanged_Implementation()
     OnLobbyUpdated.Broadcast();
 }
 
+void AGS_Lobby::MulticastNotifyGameStarting_Implementation()
+{
+    OnGameStarting.Broadcast();
+}

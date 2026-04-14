@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "LobbyWidget.h"
 #include "PC_Lobby.generated.h"
 
 /**
@@ -17,6 +18,11 @@ class FREEZETAG_API APC_Lobby : public APlayerController
 public:
 	void RequestSetReady(bool bReady);
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<ULobbyWidget> LobbyWidgetClass;
+
+	virtual void BeginPlay() override;
+
 private:
 	UFUNCTION(Server, Reliable)
 	void ServerSetReady(bool bReady);
@@ -24,6 +30,7 @@ private:
 	UFUNCTION(Server, Reliable)
 	void ServerSetPlayerName(const FString& NewName);
 
-	virtual void BeginPlay() override;
+
+	ULobbyWidget* LobbyWidget = nullptr;
 	
 };

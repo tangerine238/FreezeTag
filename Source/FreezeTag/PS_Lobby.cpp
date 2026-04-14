@@ -27,5 +27,6 @@ void APS_Lobby::SetReady(bool bReady)
 
 void APS_Lobby::OnRep_IsReady()
 {
-    // UI will refresh via OnLobbyUpdated delegate
+    if (AGS_Lobby* LGS = GetWorld()->GetGameState<AGS_Lobby>())
+        LGS->NotifyLobbyChanged();
 }

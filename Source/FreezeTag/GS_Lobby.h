@@ -7,6 +7,7 @@
 #include "GS_Lobby.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLobbyUpdated);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameStarting);
 
 /**
  * 
@@ -21,10 +22,16 @@ protected:
     UFUNCTION(NetMulticast, Reliable)
     void MulticastNotifyLobbyChanged();
 
+    UFUNCTION(NetMulticast, Reliable)
+    void MulticastNotifyGameStarting();
+
 
 public:
     UPROPERTY(BlueprintAssignable)
     FOnLobbyUpdated OnLobbyUpdated;
+
+    UPROPERTY(BlueprintAssignable)
+    FOnGameStarting OnGameStarting;
 
     void CheckAllReady();
     void NotifyLobbyChanged();

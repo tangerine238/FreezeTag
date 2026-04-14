@@ -4,11 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Border.h"
 #include "LobbyWidget.generated.h"
+
 
 class UScrollBox;
 class UButton;
 class UTextBlock;
+class UWidget;
 
 /**
  * 
@@ -31,6 +34,12 @@ protected:
     UPROPERTY(meta = (BindWidget))
     UTextBlock* ReadyButtonText;
 
+    UPROPERTY(meta = (BindWidget))
+    UBorder* LoadingScreen;
+
+    UPROPERTY(meta = (BindWidget))
+	UTextBlock* LoadingText;
+
 private:
     bool bIsReady = false;
 
@@ -39,4 +48,7 @@ private:
 
     UFUNCTION()
     void RefreshPlayerList();
+
+    UFUNCTION()
+    void ShowLoadingScreen();
 };

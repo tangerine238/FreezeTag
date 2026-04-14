@@ -17,7 +17,10 @@ void ULobbyWidget::NativeConstruct()
         ReadyButton->OnClicked.AddDynamic(this, &ULobbyWidget::OnReadyClicked);
 
     if (AGS_Lobby* LGS = GetWorld()->GetGameState<AGS_Lobby>())
+    {
         LGS->OnLobbyUpdated.AddDynamic(this, &ULobbyWidget::RefreshPlayerList);
+        LGS->OnGameStarting.AddDynamic(this, &ULobbyWidget::ShowLoadingScreen);
+    }
 
 
     FTimerHandle TimerHandle;
@@ -58,4 +61,14 @@ void ULobbyWidget::RefreshPlayerList()
         Entry->SetText(FText::FromString(Line));
         PlayerList->AddChild(Entry);
     }
+}
+
+
+void ULobbyWidget::ShowLoadingScreen()
+{
+    if (LoadingScreen)
+        LoadingScreen->SetVisibility(ESlateVisibility::Visible);
+    
+    if (LoadingText)
+        LoadingText->SetText(FText::FromString(TEXT("Starting Game...")));
 }
