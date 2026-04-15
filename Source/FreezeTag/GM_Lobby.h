@@ -27,5 +27,17 @@ public:
 
     UPROPERTY(EditDefaultsOnly)
     FString GameMapPath = TEXT("/Game/ThirdPerson/Lvl_ThirdPerson");
+
+    void EvictAllPlayers();
+
+    UPROPERTY(EditDefaultsOnly)
+    FString MainMenuMap = TEXT("/Game/Maps/MainMenu");
+
+protected:
+    UFUNCTION()
+    void OnSessionDestroyed();
+
+private:
+    bool bIsEvicting = false;
 	
 };

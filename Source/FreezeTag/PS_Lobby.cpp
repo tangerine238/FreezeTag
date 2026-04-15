@@ -28,5 +28,5 @@ void APS_Lobby::SetReady(bool bReady)
 void APS_Lobby::OnRep_IsReady()
 {
     if (AGS_Lobby* LGS = GetWorld()->GetGameState<AGS_Lobby>())
-        LGS->NotifyLobbyChanged();
+        LGS->OnLobbyUpdated.Broadcast();
 }

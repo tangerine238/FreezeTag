@@ -35,6 +35,12 @@ protected:
     UTextBlock* ReadyButtonText;
 
     UPROPERTY(meta = (BindWidget))
+    UButton* QuitButton;
+
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* QuitButtonText;
+
+    UPROPERTY(meta = (BindWidget))
     UBorder* LoadingScreen;
 
     UPROPERTY(meta = (BindWidget))
@@ -51,4 +57,7 @@ private:
 
     UFUNCTION()
     void ShowLoadingScreen();
+
+    UFUNCTION()
+    void OnQuitClicked();
 };

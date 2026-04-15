@@ -16,6 +16,9 @@ void ULobbyWidget::NativeConstruct()
     if (ReadyButton)
         ReadyButton->OnClicked.AddDynamic(this, &ULobbyWidget::OnReadyClicked);
 
+    if (QuitButton)
+        QuitButton->OnClicked.AddDynamic(this, &ULobbyWidget::OnQuitClicked);
+
     if (AGS_Lobby* LGS = GetWorld()->GetGameState<AGS_Lobby>())
     {
         LGS->OnLobbyUpdated.AddDynamic(this, &ULobbyWidget::RefreshPlayerList);
@@ -48,7 +51,13 @@ void ULobbyWidget::RefreshPlayerList()
     AGS_Lobby* LGS = GetWorld()->GetGameState<AGS_Lobby>();
     if (!LGS) return;
 
-    for (APlayerState* PS : LGS->PlayerArray)
+    TArray<APlayerState*> SortedPlayers = LGS->PlayerArray;
+    SortedPlayers.Sort([](const APlayerState& A, const APlayerState& B)
+        {
+            return A.GetPlayerId() < B.GetPlayerId();
+        });
+
+    for (APlayerState* PS : SortedPlayers)
     {
         APS_Lobby* LPS = Cast<APS_Lobby>(PS);
         if (!LPS) continue;
@@ -71,4 +80,11 @@ void ULobbyWidget::ShowLoadingScreen()
     
     if (LoadingText)
         LoadingText->SetText(FText::FromString(TEXT("Starting Game...")));
+}
+
+
+void ULobbyWidget::OnQuitClicked()
+{
+    if (APC_Lobby* PC = Cast<APC_Lobby>(GetOwningPlayer()))
+        PC->RequestQuit();
 }

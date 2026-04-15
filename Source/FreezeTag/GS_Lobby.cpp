@@ -9,7 +9,7 @@
 
 void AGS_Lobby::CheckAllReady()
 {
-    if (PlayerArray.Num() == 0) return;
+    if (PlayerArray.Num() <= 1) return;
 
     bool bAllReady = true;
     for (APlayerState* PS : PlayerArray)

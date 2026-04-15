@@ -18,10 +18,19 @@ class FREEZETAG_API APC_Lobby : public APlayerController
 public:
 	void RequestSetReady(bool bReady);
 
+	void RequestQuit();
+
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<ULobbyWidget> LobbyWidgetClass;
 
 	virtual void BeginPlay() override;
+
+protected:
+	UFUNCTION()
+	void OnSessionDestroyed();
+
+	UFUNCTION(Client, Reliable)
+	void ClientQuit();
 
 private:
 	UFUNCTION(Server, Reliable)
@@ -29,6 +38,11 @@ private:
 
 	UFUNCTION(Server, Reliable)
 	void ServerSetPlayerName(const FString& NewName);
+
+	UFUNCTION(Server, Reliable)
+	void ServerQuit();
+
+	
 
 
 	ULobbyWidget* LobbyWidget = nullptr;
