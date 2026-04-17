@@ -8,10 +8,6 @@
             "intelliSenseMode": "msvc-x64",
             "compileCommands": [
                 "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_FreezeTag.json"
-            ],
-            "macFrameworkPath": [
-                "/System/Library/Frameworks",
-                "/Library/Frameworks"
             ]
         },
         {

@@ -8,7 +8,7 @@
 #include "PC_Lobby.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class FREEZETAG_API APC_Lobby : public APlayerController
@@ -25,26 +25,22 @@ public:
 
 	virtual void BeginPlay() override;
 
+	UFUNCTION(Client, Reliable)
+	void ClientQuit();
+
 protected:
 	UFUNCTION()
 	void OnSessionDestroyed();
-
-	UFUNCTION(Client, Reliable)
-	void ClientQuit();
 
 private:
 	UFUNCTION(Server, Reliable)
 	void ServerSetReady(bool bReady);
 
 	UFUNCTION(Server, Reliable)
-	void ServerSetPlayerName(const FString& NewName);
+	void ServerSetPlayerName(const FString &NewName);
 
 	UFUNCTION(Server, Reliable)
 	void ServerQuit();
 
-	
-
-
-	ULobbyWidget* LobbyWidget = nullptr;
-	
+	ULobbyWidget *LobbyWidget = nullptr;
 };

@@ -105,6 +105,10 @@ void UMultiplayerSessionManager::DestroySession()
 {
     if (!SessionInterface.IsValid())
         return;
+
+    if (!SessionInterface->GetNamedSession(NAME_GameSession))
+        return;
+
     DestroySessionHandle = SessionInterface->AddOnDestroySessionCompleteDelegate_Handle(DestroySessionCompleteDelegate);
     SessionInterface->DestroySession(NAME_GameSession);
 }
@@ -128,3 +132,4 @@ void UMultiplayerSessionManager::OnFindSessionsCompleted(bool bWasSuccessful)
 
     OnFindSessionsComplete.Broadcast(bWasSuccessful);
 }
+

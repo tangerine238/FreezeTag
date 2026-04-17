@@ -37,6 +37,8 @@ public:
 
 	TArray<FOnlineSessionSearchResult> LastSearchResults;
 
+	
+
 private:
 	IOnlineSessionPtr SessionInterface;
 	TSharedPtr<FOnlineSessionSettings> LastSessionSettings;

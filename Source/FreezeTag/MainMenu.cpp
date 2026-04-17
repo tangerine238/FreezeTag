@@ -14,6 +14,7 @@ void UMainMenu::NativeConstruct()
     SessionManager = GetGameInstance()->GetSubsystem<UMultiplayerSessionManager>();
     if (SessionManager)
     {
+        SessionManager->DestroySession();
         SessionManager->OnCreateSessionComplete.AddDynamic(this, &UMainMenu::OnSessionCreated);
         SessionManager->OnJoinSessionComplete.AddDynamic(this, &UMainMenu::OnSessionJoined);
         SessionManager->OnFindSessionsComplete.AddDynamic(this, &UMainMenu::OnSessionsFound);
@@ -47,7 +48,6 @@ void UMainMenu::OnHostClicked()
     if (SessionManager)
     {
         UE_LOG(LogTemp, Warning, TEXT("Session manager found, creating session"));
-        SessionManager->CreateSession(4, FString("FreezeTag"));
     }
     else
     {
@@ -57,12 +57,16 @@ void UMainMenu::OnHostClicked()
 
 void UMainMenu::OnJoinClicked()
 {
-    if (MenuSwitcher) MenuSwitcher->SetActiveWidgetIndex(JoinPanelIndex);
-    
-    if (ServerList) ServerList->ClearChildren();
-    if (SearchStatusText) SearchStatusText->SetText(FText::FromString("Searching..."));
+    if (MenuSwitcher)
+        MenuSwitcher->SetActiveWidgetIndex(JoinPanelIndex);
 
-    if (SessionManager) SessionManager->FindSessions(10000);
+    if (ServerList)
+        ServerList->ClearChildren();
+    if (SearchStatusText)
+        SearchStatusText->SetText(FText::FromString("Searching..."));
+
+    if (SessionManager)
+        SessionManager->FindSessions(10000);
 }
 
 void UMainMenu::OnSettingsClicked()
@@ -80,9 +84,12 @@ void UMainMenu::OnJoinConfirmClicked()
 {
     SavePlayerName();
 
-    if (SelectedSessionIndex < 0) return;
-    if (!SessionManager) return;
-    if (!SessionManager->LastSearchResults.IsValidIndex(SelectedSessionIndex)) return;
+    if (SelectedSessionIndex < 0)
+        return;
+    if (!SessionManager)
+        return;
+    if (!SessionManager->LastSearchResults.IsValidIndex(SelectedSessionIndex))
+        return;
 
     SessionManager->JoinSession(SessionManager->LastSearchResults[SelectedSessionIndex]);
 }
@@ -96,7 +103,7 @@ void UMainMenu::SelectSession(int32 Index)
 
     if (ServerList)
     {
-        UWidget* Child = ServerList->GetChildAt(Index);
+        UWidget *Child = ServerList->GetChildAt(Index);
         SelectedEntryWidget = Cast<UServerEntryWidget>(Child);
         if (SelectedEntryWidget)
             SelectedEntryWidget->SetSelected(true);
@@ -127,36 +134,41 @@ void UMainMenu::OnSessionJoined(bool bWasSuccessful)
 void UMainMenu::PopulateServerList()
 {
 
-    if (!ServerList || !ServerEntryWidgetClass) return;
+    if (!ServerList || !ServerEntryWidgetClass)
+        return;
     ServerList->ClearChildren();
 
-    const TArray<FOnlineSessionSearchResult>& Results = SessionManager->LastSearchResults;
+    const TArray<FOnlineSessionSearchResult> &Results = SessionManager->LastSearchResults;
 
     if (Results.Num() == 0)
     {
-        if (SearchStatusText) 
+        if (SearchStatusText)
             SearchStatusText->SetText(FText::FromString("No sessions found."));
         return;
     }
 
-    if (SearchStatusText) SearchStatusText->SetText(FText::FromString(""));
+    if (SearchStatusText)
+        SearchStatusText->SetText(FText::FromString(""));
 
     TSet<FString> SeenSessions;
 
     for (int32 i = 0; i < Results.Num(); i++)
     {
-        const FOnlineSessionSearchResult& Result = Results[i];
+        const FOnlineSessionSearchResult &Result = Results[i];
 
         FString SessionId = Result.Session.GetSessionIdStr();
-        if (SeenSessions.Contains(SessionId)) continue;
+        if (SeenSessions.Contains(SessionId))
+            continue;
         SeenSessions.Add(SessionId);
 
-        UServerEntryWidget* Entry = CreateWidget<UServerEntryWidget>(this, ServerEntryWidgetClass);
-        if (!Entry) continue;
+        UServerEntryWidget *Entry = CreateWidget<UServerEntryWidget>(this, ServerEntryWidgetClass);
+        if (!Entry)
+            continue;
 
         FString Name;
         Result.Session.SessionSettings.Get(FName("ServerName"), Name);
-        if (Name.IsEmpty()) Name = Result.Session.OwningUserName;
+        if (Name.IsEmpty())
+            Name = Result.Session.OwningUserName;
         int32 MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
         int32 CurrentPlayers = MaxPlayers - Result.Session.NumOpenPublicConnections;
 
@@ -172,10 +184,12 @@ void UMainMenu::OnSessionsFound(bool bWasSuccessful)
 
 void UMainMenu::SavePlayerName()
 {
-    if (!PlayerNameInput) return;
+    if (!PlayerNameInput)
+        return;
     FString Name = PlayerNameInput->GetText().ToString().TrimStartAndEnd();
-    if (Name.IsEmpty()) Name = TEXT("Player");
+    if (Name.IsEmpty())
+        Name = TEXT("Player");
 
-    if (UGI_FreezeTag* GI = GetGameInstance<UGI_FreezeTag>())
+    if (UGI_FreezeTag *GI = GetGameInstance<UGI_FreezeTag>())
         GI->LocalPlayerName = Name;
 }

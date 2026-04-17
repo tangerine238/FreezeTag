@@ -96,6 +96,70 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GI_FreezeTag.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GI_FreezeTag.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GM_Lobby.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GM_Lobby.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GS_Lobby.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\GS_Lobby.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\LobbyWidget.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\LobbyWidget.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\MainMenu.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
@@ -121,6 +185,38 @@
 	},
 	{
 		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\MultiplayerSessionManager.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\PC_Lobby.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\PC_Lobby.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\PS_Lobby.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\Source\\FreezeTag\\PS_Lobby.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\steph\\Documents\\Coding\\Unreal Projects\\FreezeTag\\.vscode\\compileCommands_Default\\FreezeTag.1.rsp"

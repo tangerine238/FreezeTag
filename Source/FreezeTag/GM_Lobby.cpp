@@ -62,7 +62,10 @@ void AGM_Lobby::EvictAllPlayers()
     {
         APlayerController* PC = It->Get();
         if (PC && !PC->IsLocalController())
-            PC->ClientTravel(MainMenuMap, ETravelType::TRAVEL_Absolute);
+        {
+            if (APC_Lobby* LPC = Cast<APC_Lobby>(PC))
+                LPC->ClientQuit();
+        }
     }
 
     if (UMultiplayerSessionManager* SM = GetGameInstance()->GetSubsystem<UMultiplayerSessionManager>())
